@@ -24,3 +24,7 @@ Copy a skill directory into the agent's global skills directory:
 
 - Claude Code: `~/.claude/skills/<name>/`
 - Codex CLI: `~/.codex/skills/<name>/`
+
+## License
+
+[Apache-2.0](LICENSE)
