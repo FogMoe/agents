@@ -114,6 +114,22 @@ AI 收尾。真人讲完一件事就停了。
 为什么：ScarletKC 的内容有明确立场。把立场软化成中立综述，改掉的
 不是风格，是内容。
 
+## 英文中的对应特征
+
+直接用英文写作或翻译成英文时，同样的病换了一层皮，默认避免：
+
+- 二元反转: It's not just X, it's Y / This isn't about X, it's about Y
+- 空洞铺垫: In today's fast-paced world / It's worth noting that /
+  Let's dive in / At the end of the day
+- 营销腔词汇: game-changer, revolutionary, seamless, delve, elevate,
+  unleash, empower
+- 机器人结尾: Hope this helps! / Let me know if you have any
+  questions / What do you think?
+- 长破折号在英文中同样禁止，用逗号、句号或重新组句代替。
+
+日语场景较少，原则相同：语域跟随原文，不堆敬语客套模板，不把随意的
+内容写成商务邮件体。
+
 ## 标点硬规则
 
 完整列表在 SKILL.md，这里是检查时的要点：
