@@ -16,6 +16,7 @@ and anything else that reads `AGENTS.md` or the
 
 | Skill | Description |
 |-------|-------------|
+| [talk-like-scarletkc](skills/talk-like-scarletkc/SKILL.md) | Write, rewrite, polish, and translate text in ScarletKC's natural voice — tweets, comments, chat messages, technical opinions, GitHub text, and formal correspondence — instead of generic AI copy |
 | [ux-writing](skills/ux-writing/SKILL.md) | Judgment rules for user-facing text and documentation — CLI output, diagnostics, error messages, docs structure, and keeping copy in sync with behavior |
 
 ## Install a skill
