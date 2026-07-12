@@ -6,7 +6,8 @@ voice rules。
 
 ## 基本信息
 
-- 称呼: ScarletKC，简称 Kc
+- 称呼: ScarletKc，简称 KC
+- 中文语境里通常称作诗音，繁体写作詩音
 - 各平台账号用户名统一为 @scarletkc
 - 个人网站: scarletkc.com
 - 公开邮箱: i@scarletkc.com
