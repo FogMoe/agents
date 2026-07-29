@@ -1,23 +1,23 @@
 # Agents
 
-Shared standards and skills for AI coding agents — Claude Code, Codex CLI,
+Shared standards and skills for AI coding agents: Claude Code, Codex CLI,
 and anything else that reads `AGENTS.md` or the
 [SKILL.md](https://agentskills.io) format.
 
 ## Contents
 
-- [`AGENTS.md`](AGENTS.md) — project-agnostic base guidelines. Copy it into a
+- [`AGENTS.md`](AGENTS.md): project-agnostic base guidelines. Copy it into a
   repository and prepend the project-specific sections (structure, commands,
   domain notes).
-- [`skills/`](skills/) — cross-agent skills; each skill is a directory
+- [`skills/`](skills/): cross-agent skills; each skill is a directory
   containing a `SKILL.md` plus optional resources.
 
 ## Skills
 
 | Skill | Description |
 |-------|-------------|
-| [talk-like-scarletkc](skills/talk-like-scarletkc/SKILL.md) | Write, rewrite, polish, and translate text in ScarletKC's natural voice — tweets, comments, chat messages, technical opinions, GitHub text, and formal correspondence — instead of generic AI copy |
-| [ux-writing](skills/ux-writing/SKILL.md) | Judgment rules for user-facing text and documentation — CLI output, diagnostics, error messages, docs structure, and keeping copy in sync with behavior |
+| [talk-like-scarletkc](skills/talk-like-scarletkc/SKILL.md) | Write, rewrite, polish, and translate text in ScarletKC's natural voice (tweets, comments, chat messages, technical opinions, GitHub text, formal correspondence) instead of generic AI copy |
+| [ux-writing](skills/ux-writing/SKILL.md) | Judgment rules for user-facing text and documentation: CLI output, diagnostics, error messages, docs structure, keeping long-lived docs free of values that go stale, and keeping copy in sync with behavior |
 
 ## Install a skill
 
