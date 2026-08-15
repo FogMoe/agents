@@ -1,11 +1,11 @@
 ---
 name: worktree-pr
-description: "Decide whether a task deserves its own git worktree, then run it end to end: branch from the integration branch rather than the current tree, keep the main working copy untouched while the task runs, compare the result against the untouched baseline before declaring it done, and land it through a pull request instead of merging. Use when a request says to do the work in a new worktree or branch, when a change is large or risky enough that the main tree should stay usable, when several tasks need to run in parallel on one repository, when a result has to be diffed against current behavior, and when deciding where screenshots, builds, and other artifacts produced in a worktree should end up."
+description: "Decide whether a task deserves its own git worktree and, if chosen, run it end to end: branch from the integration branch rather than the current tree, keep the main working copy untouched while the task runs, compare the result against the untouched baseline before declaring it done, and prepare it for a pull request instead of merging. Use when a request says to do the work in a new worktree or branch, when a change is large or risky enough that the main tree should stay usable, when several tasks need to run in parallel on one repository, when a result has to be diffed against current behavior, and when deciding where screenshots, builds, and other artifacts produced in a worktree should end up."
 license: Apache-2.0
 metadata:
   author: scarletkc
   fogmoe-source: https://github.com/FogMoe/agents
-  fogmoe-summary: "Run a task in its own worktree: branch from the integration branch, compare against the baseline, land through a PR."
+  fogmoe-summary: "Optionally run a task in its own worktree: branch from the integration branch, compare against the baseline, and prepare it for a PR."
 ---
 
 # Worktree & PR
@@ -20,7 +20,7 @@ worktree exactly as it does anywhere else.
 
 ## Deciding
 
-Open a worktree when at least one holds: the task is large enough that a
+Consider a worktree when at least one holds: the task is large enough that a
 half-finished state would block other work, several tasks need to progress on
 the same repository at once, the result has to be compared against current
 behavior, or the change is risky enough that abandoning it should cost
@@ -65,10 +65,13 @@ current branch, that decision is already made.
 
 ## Landing
 
-Push the branch and open a pull request describing motivation, the commands
-exercised, and anything reviewers must check by hand; leave merging to the
-repository owner unless told otherwise. Say plainly which parts are done,
-which are unverified, and which were deliberately left out, since a
-worktree's isolation makes it easy to report an untested result as
+Follow the user's established authorization preferences. If committing,
+pushing, or opening a pull request requires explicit authorization, complete
+and validate the local changes, then hand over the exact commands until
+authorized. When authorized, push the branch and open a pull request describing
+motivation, the commands exercised, and anything reviewers must check by hand;
+leave merging to the repository owner unless told otherwise. Say plainly which
+parts are done, which are unverified, and which were deliberately left out,
+since a worktree's isolation makes it easy to report an untested result as
 finished. Once the branch has landed, remove the worktree; a stale copy of a
 merged branch is a trap for the next session that opens it.
