@@ -1,18 +1,20 @@
 ---
 name: worktree-pr
-description: "Decide whether a task deserves its own git worktree, then run it end to end: branch from the integration branch rather than the current tree, keep the main working copy untouched while the task runs, compare the result against the untouched baseline before declaring it done, and land it through a pull request instead of merging. Use when a request says to do the work in a new worktree or branch, when a change is large or risky enough that the main tree should stay usable, when several tasks need to run in parallel on one repository, when a result has to be diffed against current behavior, and when deciding where screenshots, builds, and other artifacts produced in a worktree should end up."
+description: "An optional workflow for deciding whether a task benefits from its own git worktree, then using one without turning isolation into permission to commit, push, or open a pull request: branch from the integration branch rather than the current tree, keep the main working copy untouched while the task runs, and compare the result against the untouched baseline. Use when a request asks for a new worktree or branch, when the user wants an isolated option for a large or risky change, when several tasks need to run in parallel on one repository, when a result has to be diffed against current behavior, and when deciding where screenshots, builds, and other artifacts produced in a worktree should end up."
 license: Apache-2.0
 metadata:
   author: scarletkc
   fogmoe-source: https://github.com/FogMoe/agents
-  fogmoe-summary: "Run a task in its own worktree: branch from the integration branch, compare against the baseline, land through a PR."
+  fogmoe-summary: "Optionally isolate a task in its own worktree, compare it against the baseline, and preserve separate permission for committing, pushing, and opening a PR."
 ---
 
-# Worktree & PR
+# Optional Worktree & PR Workflow
 
-A worktree buys two things: the main working copy stays usable while the task
-runs, and the untouched copy remains available as a baseline to compare
-against. Both are worth real setup cost, and neither applies to every change.
+A worktree is an optional workflow that buys two things: the main working copy
+stays usable while the task runs, and the untouched copy remains available as
+a baseline to compare against. Both are worth real setup cost, and neither
+applies to every change. Isolation does not by itself authorize committing,
+pushing, opening a pull request, or merging.
 
 This covers the isolation mechanics. How large the change itself should be is
 [`scoped-change`](../scoped-change/SKILL.md), and it applies inside a
@@ -20,11 +22,12 @@ worktree exactly as it does anywhere else.
 
 ## Deciding
 
-Open a worktree when at least one holds: the task is large enough that a
+Consider a worktree when at least one holds: the task is large enough that a
 half-finished state would block other work, several tasks need to progress on
 the same repository at once, the result has to be compared against current
 behavior, or the change is risky enough that abandoning it should cost
-nothing.
+nothing. Treat these as reasons to offer or choose the workflow when they fit
+the user's established preferences, not as a requirement to impose it.
 
 Skip it when the change is small, self-contained, and reviewable in one pass.
 Setting up an isolated copy for a typo fix or a one-line config edit costs
@@ -65,10 +68,15 @@ current branch, that decision is already made.
 
 ## Landing
 
-Push the branch and open a pull request describing motivation, the commands
-exercised, and anything reviewers must check by hand; leave merging to the
-repository owner unless told otherwise. Say plainly which parts are done,
-which are unverified, and which were deliberately left out, since a
-worktree's isolation makes it easy to report an untested result as
+Landing is a separate permission boundary. Follow the user's established
+preference: when committing, pushing, or creating a pull request requires
+explicit authorization, perform each action only after that authorization.
+Until then, complete the changes and validation in the local worktree and hand
+over the exact commands. If no preference is known, do not infer permission
+from the decision to use a worktree. When landing is authorized, describe the
+motivation, commands exercised, and anything reviewers must check by hand, and
+leave merging to the repository owner unless told otherwise. Say plainly which
+parts are done, which are unverified, and which were deliberately left out,
+since a worktree's isolation makes it easy to report an untested result as
 finished. Once the branch has landed, remove the worktree; a stale copy of a
 merged branch is a trap for the next session that opens it.
