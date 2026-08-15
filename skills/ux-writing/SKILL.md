@@ -90,6 +90,18 @@ exception purely to suppress a traceback, keep the message intact.
   don't accumulate feature bullets; quick-starts don't explain architecture.
   A README stays lean and links into the docs; detail accumulating there
   usually means it left its canonical home.
+- **Order a page by what the reader needs first, and split when it stops
+  being one task.** Open with scope and the authoritative entry points, then
+  the common rules and the main path, and only then exceptions, recovery,
+  and change checks. An overview layer summarizes stable semantics and links
+  down; it does not carry field tables, full payloads, or current numbers to
+  buy self-containment. When a page starts demanding that the reader
+  understand several unrelated tasks, or whole chapters serve only two
+  maintainers, that is the signal to split it — and the split leaves behind
+  one line of purpose plus the link, never a second copy of the fact.
+  *Counter-example: a getting-started page opened with the full option
+  reference, so the three commands a first-time reader needed sat two
+  screens below it.*
 - **Reminders name the most-forgotten item only.** A guideline that
   enumerates every artifact reads as noise and gets skipped whole. "Update
   whichever docs the change affects; the bundled skill is the easiest to
