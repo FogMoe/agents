@@ -1,0 +1,33 @@
+name: Validate skills
+
+"on":
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Test catalog generator
+        run: python -m unittest discover -s tests -v
+
+      - name: Check README skill catalog
+        run: python scripts/update_readme_skills.py --check
+
+      - name: Validate Agent Skills
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh skill publish --dry-run
