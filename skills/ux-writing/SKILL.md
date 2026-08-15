@@ -83,6 +83,12 @@ exception purely to suppress a traceback, keep the message intact.
   duplicates the canonical content and then ends with "see X for the full
   contract", it already is the full contract. Delete the restatement; keep
   the link and whatever is specific to this surface.
+- **Prefer the smallest sufficient edit.** When revising existing text,
+  preserve unaffected wording, structure, and rationale. Remove genuine
+  duplication, but do not rewrite neighboring prose or compress away useful
+  distinctions without a reason. *Counter-example: changing one mandatory
+  workflow into an optional one rewrote several surrounding sections, then
+  over-corrected by removing useful context; a few local edits were enough.*
 - **Insertion respects adjacency.** Before adding a section, check what the
   surrounding paragraphs attach to. *Counter-example: a new section landed
   between a flags table and its output-format footnote, orphaning the
