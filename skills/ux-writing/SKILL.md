@@ -1,6 +1,6 @@
 ---
 name: ux-writing
-description: Judgment rules for user-facing text and documentation: CLI/tool output, status and diagnostic displays, error messages, help text, README and docs structure, keeping long-lived docs free of values that go stale, and keeping copy in sync with behavior. Use when writing or changing any user-visible string, when adding or restructuring documentation, when a doc is about to record a version, a deployment state, or a value the code already owns, or when reviewing a diff that touches copy or docs.
+description: Judgment rules for user-facing text and documentation: CLI/tool output, status and diagnostic displays, error messages, help text, README and docs structure, keeping long-lived docs free of values that go stale, and keeping copy in sync with behavior. Use when writing or changing any user-visible string, when adding or restructuring documentation, when deciding which document owns a fact or where a new page or section belongs, when a doc is about to record a version, a deployment state, or a value the code already owns, or when reviewing a diff that touches copy or docs.
 ---
 
 # UX Writing & Docs
@@ -56,6 +56,18 @@ exception purely to suppress a traceback, keep the message intact.
 
 ## Documentation
 
+- **Each document has one responsibility, and it decides what belongs.** A
+  page is a durable contract, a proposal, an investigation, a TODO, a dated
+  work order, or a runbook — one of them, not several. Naming that first is
+  what makes a canonical home decidable: a fact lives on the page whose job
+  it is, and every other surface reaches it through a single specific link
+  instead of a partial retelling on each page that happens to touch it. When
+  two pages both claim to be the detailed spec, the broader responsibility
+  keeps the shared rules and the narrower keeps only what its own surface
+  adds. *Counter-example: an implementation plan stayed the de-facto spec
+  after shipping, so the rules lived half there and half in the architecture
+  doc; folding the stable rules into the contract and leaving the sequence in
+  git history left one page to trust.*
 - **One canonical home per fact.** Details that change together (field
   lists, precedence chains, supported values) live in exactly one document;
   every other mention links to it. Legitimate copies: artifacts distributed
