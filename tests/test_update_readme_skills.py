@@ -17,12 +17,26 @@ stale
 """
 
 
-def write_skill(root: Path, name: str, summary: str | None) -> None:
-    metadata = "" if summary is None else f'\nmetadata:\n  fogmoe-summary: "{summary}"'
+def write_skill(
+    root: Path,
+    name: str,
+    summary: str | None,
+    *,
+    author: str | None = "scarletkc",
+    source: str | None = "https://github.com/FogMoe/agents",
+) -> None:
+    metadata_lines = ["metadata:"]
+    if author is not None:
+        metadata_lines.append(f"  author: {author}")
+    if source is not None:
+        metadata_lines.append(f"  fogmoe-source: {source}")
+    if summary is not None:
+        metadata_lines.append(f'  fogmoe-summary: "{summary}"')
+    metadata = "\n".join(metadata_lines)
     path = root / "skills" / name / "SKILL.md"
     path.parent.mkdir(parents=True)
     path.write_text(
-        f"---\nname: {name}\ndescription: Test skill.{metadata}\n---\n",
+        f"---\nname: {name}\ndescription: Test skill.\n{metadata}\n---\n",
         encoding="utf-8",
     )
 
@@ -69,6 +83,18 @@ class UpdateReadmeSkillsTests(unittest.TestCase):
         write_skill(self.root, "alpha", None)
 
         with self.assertRaisesRegex(CatalogError, "missing metadata.fogmoe-summary"):
+            update_readme(self.root, check=False)
+
+    def test_rejects_skill_without_canonical_source(self) -> None:
+        write_skill(self.root, "alpha", "First skill.", source=None)
+
+        with self.assertRaisesRegex(CatalogError, "missing metadata.fogmoe-source"):
+            update_readme(self.root, check=False)
+
+    def test_rejects_skill_without_author(self) -> None:
+        write_skill(self.root, "alpha", "First skill.", author=None)
+
+        with self.assertRaisesRegex(CatalogError, "missing metadata.author"):
             update_readme(self.root, check=False)
 
 

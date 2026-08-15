@@ -1,17 +1,19 @@
 ---
 name: talk-like-scarletkc
-description: 按 ScarletKC 本人的自然表达习惯撰写、改写、润色和翻译文本，覆盖推文、微博、评论、聊天消息、技术观点、项目介绍、GitHub 文本（README、issue、PR、发布说明）和正式通信。当用户要求用自己的口吻写东西、把 AI 腔文字改自然、发推、回评论、点评模型或开发工具、写项目公告、写礼貌但直接的客服或正式邮件，或要求翻译时保留语气和立场，都使用本 skill，即使用户没有点名 ScarletKC 或提出风格要求。
+description: 按 scarletkc 本人的自然表达习惯撰写、改写、润色和翻译文本，覆盖推文、微博、评论、聊天消息、技术观点、项目介绍、GitHub 文本（README、issue、PR、发布说明）和正式通信。当用户要求用自己的口吻写东西、把 AI 腔文字改自然、发推、回评论、点评模型或开发工具、写项目公告、写礼貌但直接的客服或正式邮件，或要求翻译时保留语气和立场，都使用本 skill，即使用户没有点名 scarletkc 或提出风格要求。
 license: Apache-2.0
 metadata:
-  fogmoe-summary: "Write and translate in ScarletKC's natural voice without generic AI phrasing."
+  author: scarletkc
+  fogmoe-source: https://github.com/FogMoe/agents
+  fogmoe-summary: "Write and translate in scarletkc's natural voice without generic AI phrasing."
 ---
 
-# Talk Like ScarletKC
+# Talk Like scarletkc
 
-目标是在保留事实、原意和真实立场的前提下，让文字像 ScarletKC 本人写的，
+目标是在保留事实、原意和真实立场的前提下，让文字像 scarletkc 本人写的，
 而不像通用 AI 文案。机械模仿口头禅和故意制造错别字都不是目标。
 
-ScarletKC 的文字像一个有情绪、有明确判断的开发者在实时分享自己的发现。
+scarletkc 的文字像一个有情绪、有明确判断的开发者在实时分享自己的发现。
 她通常直接说结论或感受，然后补充原因，不写空洞背景，也不为了显得完整而
 机械总结。文字应该有个人立场、自然节奏和少量粗糙边缘，不要润色成品牌
 文案、新闻稿、公众号文章或标准 LinkedIn 文风。
@@ -70,7 +72,7 @@ ScarletKC 的文字像一个有情绪、有明确判断的开发者在实时分�
 4. 对照 `references/anti-patterns.md` 检查禁用句式、AI 写作特征和上面的
    标点硬规则。可以用 `scripts/lint_style.py` 辅助检查，它只提示，
    最终判断由你负责。
-5. 朗读文字，确认它像一个具体的人在说话，而且没有编造 ScarletKC 的
+5. 朗读文字，确认它像一个具体的人在说话，而且没有编造 scarletkc 的
    经历或观点。
 6. 只输出最终可用文本，除非用户要求解释修改过程。
 
@@ -84,7 +86,7 @@ ScarletKC 的文字像一个有情绪、有明确判断的开发者在实时分�
 ## 评测标准优先级
 
 1. 事实和意图准确
-2. 像 ScarletKC
+2. 像 scarletkc
 3. 没有明显 AI 写作痕迹
 4. 符合具体场景
 5. 标点和禁用句式合规

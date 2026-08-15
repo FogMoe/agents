@@ -15,6 +15,9 @@ from pathlib import Path
 START_MARKER = "<!-- skills:start -->"
 END_MARKER = "<!-- skills:end -->"
 SUMMARY_KEY = "fogmoe-summary"
+REQUIRED_METADATA_VALUES = {
+    "fogmoe-source": "https://github.com/FogMoe/agents",
+}
 
 
 class CatalogError(ValueError):
@@ -60,7 +63,7 @@ def _frontmatter_lines(path: Path) -> list[str]:
 
 def _read_skill(path: Path, repo_root: Path) -> Skill:
     name: str | None = None
-    summary: str | None = None
+    metadata: dict[str, str] = {}
     in_metadata = False
 
     for line in _frontmatter_lines(path):
@@ -74,15 +77,27 @@ def _read_skill(path: Path, repo_root: Path) -> Skill:
 
         if in_metadata:
             metadata_item = re.fullmatch(r"\s{2}([a-zA-Z0-9_-]+):\s*(.*)", line)
-            if metadata_item and metadata_item.group(1) == SUMMARY_KEY:
-                summary = _parse_scalar(
-                    metadata_item.group(2), path=path, field=f"metadata.{SUMMARY_KEY}"
+            if metadata_item:
+                key, value = metadata_item.groups()
+                metadata[key] = _parse_scalar(
+                    value, path=path, field=f"metadata.{key}"
                 )
 
     if name is None:
         raise CatalogError(f"{path}: missing name")
+    summary = metadata.get(SUMMARY_KEY)
     if summary is None:
         raise CatalogError(f"{path}: missing metadata.{SUMMARY_KEY}")
+    if "author" not in metadata:
+        raise CatalogError(f"{path}: missing metadata.author")
+    for key, expected in REQUIRED_METADATA_VALUES.items():
+        actual = metadata.get(key)
+        if actual is None:
+            raise CatalogError(f"{path}: missing metadata.{key}")
+        if actual != expected:
+            raise CatalogError(
+                f"{path}: metadata.{key} must be {expected!r}, got {actual!r}"
+            )
     if name != path.parent.name:
         raise CatalogError(
             f"{path}: skill name {name!r} does not match directory {path.parent.name!r}"
