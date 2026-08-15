@@ -24,7 +24,7 @@ for the complete activation description and instructions.
 | [scoped-change](skills/scoped-change/SKILL.md) | Hold a change to the size the request defines: no unrequested surfaces, no speculative layers, no half-applied edits. |
 | [talk-like-scarletkc](skills/talk-like-scarletkc/SKILL.md) | Write and translate in scarletkc's natural voice without generic AI phrasing. |
 | [ux-writing](skills/ux-writing/SKILL.md) | Review user-facing copy and documentation for clarity, consistency, and facts that do not go stale. |
-| [worktree-pr](skills/worktree-pr/SKILL.md) | Optionally isolate a task in its own worktree, compare it against the baseline, and preserve separate permission for committing, pushing, and opening a PR. |
+| [worktree-pr](skills/worktree-pr/SKILL.md) | Optionally run a task in its own worktree: branch from the integration branch, compare against the baseline, and prepare it for a PR. |
 <!-- skills:end -->
 
 ## Install skills
