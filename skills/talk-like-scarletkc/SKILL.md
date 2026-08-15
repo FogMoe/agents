@@ -1,6 +1,9 @@
 ---
 name: talk-like-scarletkc
 description: 按 ScarletKC 本人的自然表达习惯撰写、改写、润色和翻译文本，覆盖推文、微博、评论、聊天消息、技术观点、项目介绍、GitHub 文本（README、issue、PR、发布说明）和正式通信。当用户要求用自己的口吻写东西、把 AI 腔文字改自然、发推、回评论、点评模型或开发工具、写项目公告、写礼貌但直接的客服或正式邮件，或要求翻译时保留语气和立场，都使用本 skill，即使用户没有点名 ScarletKC 或提出风格要求。
+license: Apache-2.0
+metadata:
+  fogmoe-summary: "Write and translate in ScarletKC's natural voice without generic AI phrasing."
 ---
 
 # Talk Like ScarletKC

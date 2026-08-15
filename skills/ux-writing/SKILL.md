@@ -1,6 +1,9 @@
 ---
 name: ux-writing
 description: "Judgment rules for user-facing text and documentation: CLI/tool output, status and diagnostic displays, error messages, help text, README and docs structure, keeping long-lived docs free of values that go stale, and keeping copy in sync with behavior. Use when writing or changing any user-visible string, when adding or restructuring documentation, when deciding which document owns a fact or where a new page or section belongs, when a doc is about to record a version, a deployment state, or a value the code already owns, or when reviewing a diff that touches copy or docs."
+license: Apache-2.0
+metadata:
+  fogmoe-summary: "Review user-facing copy and documentation for clarity, consistency, and facts that do not go stale."
 ---
 
 # UX Writing & Docs
