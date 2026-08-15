@@ -123,7 +123,10 @@ applied to prose.
   hashes, object and migration counts, expiry dates, and "currently live /
   not yet shipped" claims all change without anyone re-reading the page that
   repeats them. Those belong in a changelog, in git history, or on the
-  release ticket, where carrying a date is the point. *Counter-example: a
+  release ticket, where carrying a date is the point. The rule forbids the
+  hand-maintained second copy, not the table: when a page genuinely has to
+  show current values, generate it from the authoritative source at build
+  time so it cannot drift silently. *Counter-example: a
   runbook opened with "production currently runs 2.3.1"; four releases later
   an on-call engineer trusted the line and worked through the wrong
   version's changelog.*
@@ -134,7 +137,12 @@ applied to prose.
   data key, or heading. "See the source", a repo-root link, or a directory
   leaves the reader to re-derive what the sentence promised. If no single
   symbol owns the fact, that is a code problem surfacing as a doc problem;
-  fix the boundary instead of papering over it with a copied table.
+  fix the boundary instead of papering over it with a copied table. A
+  directory is a fair target in two cases only: the fact emerges from an
+  ordered set with no single-file truth (migrations replayed in sequence),
+  or the directory is a catalog some loader enumerates (locales, plugins,
+  maps). Both still owe a searchable selection key — the naming convention,
+  the loader function, the object name.
   *Counter-example: "protocol versions are defined in the networking layer"
   sent every reader grepping six files, and became a link to
   `PROTOCOL_VERSION` in `net/constants.py`.*
