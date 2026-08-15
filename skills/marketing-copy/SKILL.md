@@ -57,21 +57,24 @@ Never invent a metric, a benchmark, a user count, a review quote, or a
 comparison against a named competitor. When the honest version is thin, that
 is information about the release, not a prompt to inflate it.
 
-## Earning the read
+## Writing for someone who has never seen it
 
-- **The opening line delivers the news.** It is the only part most people
-  see. A headline that describes the category ("a new update is here")
-  spends the reader's only guaranteed attention on nothing.
-- **Say what it is before why it matters.** A reader who cannot tell what the
-  product does will not care that it improved.
-- **One post, one thing to take away.** Everything else is support, and a
-  post arguing several unrelated points lands none of them.
-- **Ask for one action.** Name it specifically and put it where the reader
-  arrives at it. Two competing asks split the response.
-- **Skip the promotional register.** Revolutionary, seamless, game-changing,
-  and unleash read as filler because they appear in every launch post
-  regardless of what shipped. So do manufactured urgency and invented
-  scarcity.
+Say what the thing is before saying why it got better. A reader who cannot
+tell what the product does has no way to care that it improved, and an
+update post aimed at existing users reads as noise to everyone else. When a
+post has to serve both audiences, the identifying sentence costs one line
+and buys the rest.
+
+Revolutionary, seamless, game-changing, and unleash have stopped carrying
+meaning in this genre: they appear in every launch post regardless of what
+shipped, so a reader skips them to look for the specifics underneath. Write
+the specifics instead. Manufactured urgency and invented scarcity fail the
+same way, and cost more when the deadline turns out to be arbitrary.
+
+A post may legitimately carry several asks, since a launch often wants the
+wishlist, the community, and the download at once. Order them by what this
+particular reader can act on now, and let each one be findable rather than
+competing for the same sentence.
 
 ## Naming across languages
 
