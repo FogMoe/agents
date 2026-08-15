@@ -20,9 +20,11 @@ for the complete activation description and instructions.
 <!-- skills:start -->
 | Skill | Summary |
 |-------|---------|
+| [marketing-copy](skills/marketing-copy/SKILL.md) | Write outbound promo copy that stays truthful, discloses only what may be public, and earns attention without hype. |
 | [scoped-change](skills/scoped-change/SKILL.md) | Hold a change to the size the request defines: no unrequested surfaces, no speculative layers, no half-applied edits. |
 | [talk-like-scarletkc](skills/talk-like-scarletkc/SKILL.md) | Write and translate in scarletkc's natural voice without generic AI phrasing. |
 | [ux-writing](skills/ux-writing/SKILL.md) | Review user-facing copy and documentation for clarity, consistency, and facts that do not go stale. |
+| [worktree-pr](skills/worktree-pr/SKILL.md) | Run a task in its own worktree: branch from the integration branch, compare against the baseline, land through a PR. |
 <!-- skills:end -->
 
 ## Install skills
