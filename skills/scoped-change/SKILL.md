@@ -1,6 +1,6 @@
 ---
 name: scoped-change
-description: "Judgment rules for holding a change to the size the request actually defines: not editing surfaces nobody named, not adding speculative compatibility layers, flags, or abstractions, reusing the existing implementation instead of writing a second one beside it, finishing every site the requested change implies, answering a question as a question instead of starting work, and getting consent before expensive or irreversible actions. Use before implementing any requested change, when tempted to add a wrapper, fallback, option, or component that was not asked for, when a change looks like it needs a migration or backward-compatible path, when a request reads as a question rather than a task, and when reviewing a diff for edits outside the stated scope."
+description: "Judgment rules for locating the correct boundary of a requested change: staying inert outside it while completing every required site inside it. Use when scope is ambiguous, a diff touches neighboring surfaces, required dependent edits are unclear, or a proposed compatibility layer, migration, fallback, flag, abstraction, or parallel implementation may exceed the request."
 license: Apache-2.0
 metadata:
   author: scarletkc
@@ -68,26 +68,6 @@ boundary first, then be exhaustive inside it and inert outside it.
   missing. *Counter-example: a new entity landed without the rarity field
   every sibling declares, and only surfaced when a loader that groups by
   rarity silently dropped it.*
-
-## Before the first edit
-
-- **A question is a question.** "What is the current value", "does X still
-  happen when Y", "is this reasonable" ask for an answer and its source, not
-  for a fix. Answer with the file and symbol that owns the fact, then stop;
-  the follow-up will say whether to change it. *Counter-example: asked what
-  the current refresh price was, an agent changed it.*
-- **Propose before implementing when the change is structural.** New
-  systems, schema changes, and anything touching an agreed-upon design get a
-  short plan and an explicit go-ahead first. Rewriting after the fact costs
-  more than the round trip, and the plan is where a wrong assumption is
-  cheapest to catch.
-- **Scope covers cost, not just code.** A full rebuild, a full suite on a
-  one-line data edit, a deploy, or a session on a remote host is a decision
-  the user owns even when it is technically reversible. Match the
-  verification to the change, and ask — or hand over the command to run —
-  before anything remote or expensive. *Counter-example: a data-only edit
-  triggered a full rebuild and suite on a machine where that costs fifteen
-  minutes, twice, before the user asked it to stop.*
 
 ## Order of work
 
