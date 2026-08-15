@@ -1,6 +1,6 @@
 ---
 name: ux-writing
-description: Judgment rules for user-facing text and documentation: CLI/tool output, status and diagnostic displays, error messages, help text, README and docs structure, keeping long-lived docs free of values that go stale, and keeping copy in sync with behavior. Use when writing or changing any user-visible string, when adding or restructuring documentation, when a doc is about to record a version, a deployment state, or a value the code already owns, or when reviewing a diff that touches copy or docs.
+description: "Judgment rules for user-facing text and documentation: CLI/tool output, status and diagnostic displays, error messages, help text, README and docs structure, keeping long-lived docs free of values that go stale, and keeping copy in sync with behavior. Use when writing or changing any user-visible string, when adding or restructuring documentation, when deciding which document owns a fact or where a new page or section belongs, when a doc is about to record a version, a deployment state, or a value the code already owns, or when reviewing a diff that touches copy or docs."
 ---
 
 # UX Writing & Docs
@@ -56,6 +56,18 @@ exception purely to suppress a traceback, keep the message intact.
 
 ## Documentation
 
+- **Each document has one responsibility, and it decides what belongs.** A
+  page is a durable contract, a proposal, an investigation, a TODO, a dated
+  work order, or a runbook — one of them, not several. Naming that first is
+  what makes a canonical home decidable: a fact lives on the page whose job
+  it is, and every other surface reaches it through a single specific link
+  instead of a partial retelling on each page that happens to touch it. When
+  two pages both claim to be the detailed spec, the broader responsibility
+  keeps the shared rules and the narrower keeps only what its own surface
+  adds. *Counter-example: an implementation plan stayed the de-facto spec
+  after shipping, so the rules lived half there and half in the architecture
+  doc; folding the stable rules into the contract and leaving the sequence in
+  git history left one page to trust.*
 - **One canonical home per fact.** Details that change together (field
   lists, precedence chains, supported values) live in exactly one document;
   every other mention links to it. Legitimate copies: artifacts distributed
@@ -78,6 +90,18 @@ exception purely to suppress a traceback, keep the message intact.
   don't accumulate feature bullets; quick-starts don't explain architecture.
   A README stays lean and links into the docs; detail accumulating there
   usually means it left its canonical home.
+- **Order a page by what the reader needs first, and split when it stops
+  being one task.** Open with scope and the authoritative entry points, then
+  the common rules and the main path, and only then exceptions, recovery,
+  and change checks. An overview layer summarizes stable semantics and links
+  down; it does not carry field tables, full payloads, or current numbers to
+  buy self-containment. When a page starts demanding that the reader
+  understand several unrelated tasks, or whole chapters serve only two
+  maintainers, that is the signal to split it — and the split leaves behind
+  one line of purpose plus the link, never a second copy of the fact.
+  *Counter-example: a getting-started page opened with the full option
+  reference, so the three commands a first-time reader needed sat two
+  screens below it.*
 - **Reminders name the most-forgotten item only.** A guideline that
   enumerates every artifact reads as noise and gets skipped whole. "Update
   whichever docs the change affects; the bundled skill is the easiest to
@@ -99,7 +123,10 @@ applied to prose.
   hashes, object and migration counts, expiry dates, and "currently live /
   not yet shipped" claims all change without anyone re-reading the page that
   repeats them. Those belong in a changelog, in git history, or on the
-  release ticket, where carrying a date is the point. *Counter-example: a
+  release ticket, where carrying a date is the point. The rule forbids the
+  hand-maintained second copy, not the table: when a page genuinely has to
+  show current values, generate it from the authoritative source at build
+  time so it cannot drift silently. *Counter-example: a
   runbook opened with "production currently runs 2.3.1"; four releases later
   an on-call engineer trusted the line and worked through the wrong
   version's changelog.*
@@ -110,7 +137,12 @@ applied to prose.
   data key, or heading. "See the source", a repo-root link, or a directory
   leaves the reader to re-derive what the sentence promised. If no single
   symbol owns the fact, that is a code problem surfacing as a doc problem;
-  fix the boundary instead of papering over it with a copied table.
+  fix the boundary instead of papering over it with a copied table. A
+  directory is a fair target in two cases only: the fact emerges from an
+  ordered set with no single-file truth (migrations replayed in sequence),
+  or the directory is a catalog some loader enumerates (locales, plugins,
+  maps). Both still owe a searchable selection key — the naming convention,
+  the loader function, the object name.
   *Counter-example: "protocol versions are defined in the networking layer"
   sent every reader grepping six files, and became a link to
   `PROTOCOL_VERSION` in `net/constants.py`.*
