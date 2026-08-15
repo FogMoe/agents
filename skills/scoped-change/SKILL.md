@@ -69,6 +69,13 @@ boundary first, then be exhaustive inside it and inert outside it.
   every sibling declares, and only surfaced when a loader that groups by
   rarity silently dropped it.*
 
+## When the boundary is unclear
+
+- **Ask only for consequential boundary decisions.** If the requested boundary
+  cannot be determined without making a consequential choice the user has not
+  already made, ask before crossing it. Routine implementation decisions stay
+  with the agent and must not become confirmation gates.
+
 ## Order of work
 
 - **Lock behavior in tests once it is settled, not while it is moving.**
