@@ -20,7 +20,7 @@ for the complete activation description and instructions.
 <!-- skills:start -->
 | Skill | Summary |
 |-------|---------|
-| [talk-like-scarletkc](skills/talk-like-scarletkc/SKILL.md) | Write and translate in ScarletKC's natural voice without generic AI phrasing. |
+| [talk-like-scarletkc](skills/talk-like-scarletkc/SKILL.md) | Write and translate in scarletkc's natural voice without generic AI phrasing. |
 | [ux-writing](skills/ux-writing/SKILL.md) | Review user-facing copy and documentation for clarity, consistency, and facts that do not go stale. |
 <!-- skills:end -->
 
@@ -67,6 +67,13 @@ npx skills add FogMoe/agents --skill <skill> --agent codex -g -y
 
 Update global skills with `npx skills update -g -y`.
 
+## Feedback and contributions
+
+Report problems or suggest improvements through
+[GitHub Issues](https://github.com/FogMoe/agents/issues). Pull requests are
+welcome.
+
 ## License
 
-[Apache-2.0](LICENSE)
+[Apache-2.0](LICENSE). Attribution information is provided in
+[`NOTICE`](NOTICE).
