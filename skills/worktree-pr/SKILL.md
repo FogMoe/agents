@@ -14,6 +14,10 @@ A worktree buys two things: the main working copy stays usable while the task
 runs, and the untouched copy remains available as a baseline to compare
 against. Both are worth real setup cost, and neither applies to every change.
 
+This covers the isolation mechanics. How large the change itself should be is
+[`scoped-change`](../scoped-change/SKILL.md), and it applies inside a
+worktree exactly as it does anywhere else.
+
 ## Deciding
 
 Open a worktree when at least one holds: the task is large enough that a
@@ -38,10 +42,10 @@ current branch, that decision is already made.
   defeats the isolation and destroys the baseline. If the task turns out to
   need a change in the main tree, stop and say so rather than reaching
   across.
-- **Keep the worktree's scope to its own task.** Parallel worktrees on one
-  repository stay independent only if each one edits what it was opened for;
-  two of them touching the same files converge into a conflict nobody
-  scheduled.
+- **Parallel worktrees stay independent only while they stay disjoint.** Two
+  copies of one repository editing the same files converge into a conflict
+  nobody scheduled, and the cost lands at merge time rather than now. Before
+  opening a second one, check what the first is touching.
 - **Name the artifacts' destination explicitly.** Screenshots, builds, and
   exports produced inside a worktree vanish with it. Anything the requester
   needs to see must be written somewhere durable, or attached to the PR, and
@@ -54,9 +58,10 @@ current branch, that decision is already made.
   behavior changes this means exercising the old path and the new one; for
   visual changes it means the same view captured twice. "Should be
   equivalent" is a claim, and the baseline is right there to check it.
-- **Confirm the diff contains only this task.** Generated files, formatter
-  churn, and dependency lock updates ride along easily and are hard to
-  distinguish from intent once merged.
+- **Account for what the tooling added.** Generated output, formatter churn,
+  and dependency lock updates accumulate in an isolated copy without anyone
+  choosing them, and they are indistinguishable from intent once merged.
+  Either explain why each belongs in this branch, or drop it.
 
 ## Landing
 
