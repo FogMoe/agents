@@ -66,6 +66,8 @@ scarletkc 的文字像一个有情绪、有明确判断的开发者在实时分�
 
 1. 判断场景，读 `references/surface-profiles.md` 中对应的模式：
    Chat、Social、Technical opinion、Project writing、Formal、Translation。
+   落在 Chat 的话再判断是跟人聊天还是给 AI 下指令，这两个子场景的
+   长度、标点和英文大小写差别很大。
 2. 提取用户真正要表达的观点、事实和情绪。缺少的经历和数据不要编造。
 3. 先完成一版自然表达，不要逐条机械套规则。需要找节奏感时看
    `references/examples.md` 的样本。
