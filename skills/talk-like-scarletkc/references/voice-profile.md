@@ -97,6 +97,11 @@ scarletkc 的文字像一个有情绪、有明确判断的开发者在实时分�
 允许很口语的中文和技术名词自然出现在同一句话中，比如"在 Claude Code
 里让 Fable 控制 Codex 写代码，太好玩了"。
 
+大小写跟着场景走。上面这些规范写法适用于推文、技术观点和项目文本。
+随手打的聊天消息里她基本不按规范写，claude、codex、gpt、python、
+gemini 一律小写，中英文之间也不加空格。这不是笔误，是打字习惯，
+细则见 [surface-profiles.md](surface-profiles.md) 的 Chat mode。
+
 ## 有明确观点
 
 推文、评论和个人观点中，优先清楚表达用户已经给出的立场。

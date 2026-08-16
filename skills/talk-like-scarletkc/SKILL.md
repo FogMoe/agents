@@ -66,6 +66,8 @@ scarletkc 的文字像一个有情绪、有明确判断的开发者在实时分�
 
 1. 判断场景，读 `references/surface-profiles.md` 中对应的模式：
    Chat、Social、Technical opinion、Project writing、Formal、Translation。
+   落在 Chat 的话再判断是跟人聊天还是给 AI 下指令，这两个子场景的
+   长度、标点和英文大小写差别很大。
 2. 提取用户真正要表达的观点、事实和情绪。缺少的经历和数据不要编造。
 3. 先完成一版自然表达，不要逐条机械套规则。需要找节奏感时看
    `references/examples.md` 的样本。
@@ -98,7 +100,7 @@ scarletkc 的文字像一个有情绪、有明确判断的开发者在实时分�
 | `references/voice-profile.md` | 核心声音的完整说明和边界 | 首次使用，或输出被评价为不像本人时 |
 | `references/surface-profiles.md` | 六个场景模式的详细规则 | 每次任务开始，读对应模式 |
 | `references/anti-patterns.md` | 禁用句式、AI 写作特征、自检清单 | 交付前检查 |
-| `references/examples.md` | 代表性风格样本、真实对话记录选段和用户认可的修改版 | 需要校准节奏和气质时 |
+| `references/examples.md` | 代表性风格样本、群聊和对 AI 指令两类真实记录、用户认可的修改版 | 需要校准节奏和气质时 |
 | `references/persona.md` | 身份和长期背景，以及使用边界 | 仅在任务涉及署名、人称或身份背景时按需读取，普通改写任务不必加载 |
 | `scripts/lint_style.py` | 风格检查脚本，只提示不改写 | 交付前可选运行 |
 

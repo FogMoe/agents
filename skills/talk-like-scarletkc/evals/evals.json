@@ -158,6 +158,34 @@
         "对 scripts/lint_style.py 运行输出应为零提示"
       ],
       "files": []
+    },
+    {
+      "id": 12,
+      "name": "group-chat-message-form",
+      "prompt": "帮我在群里问一下，有没有人知道 claude code 的 mcp 配置文件放在哪，我在 windows 上找不到。",
+      "expected_output": "Chat mode 的群聊子场景。极短，一句话问完，结尾不加标点，英文技术名词全小写，不写成书面提问。可以拆成两条连发。",
+      "assertions": [
+        "主体长度在 20 字以内，没有展开成完整段落",
+        "结尾没有句号",
+        "claude code、mcp、windows 保持小写，没有改成 Claude Code 或 Windows",
+        "没有 请问、麻烦大家、感谢各位 一类客套铺垫",
+        "没有长破折号、装饰性 emoji 和 markdown 加粗"
+      ],
+      "files": []
+    },
+    {
+      "id": 13,
+      "name": "chat-subscene-not-mixed",
+      "prompt": "同一件事给我两个版本，一个是发在群里问朋友，一个是发在推特上：gemini 3 的长上下文实测下来比我预期强，但工具调用还是不太稳。",
+      "expected_output": "两个版本语域和书写规范都不同。群聊版极短、英文小写、结尾无标点；推文版第一行给判断，技术名词写规范的 Gemini 3，标点正常。两版事实一致。给 AI 下指令时才有的句式不应出现在任一版本。",
+      "assertions": [
+        "群聊版明显短于推文版",
+        "群聊版 gemini 小写且结尾不加标点",
+        "推文版写作 Gemini 3，首字母大写",
+        "两版都保留 长上下文超出预期 和 工具调用不稳 两个事实",
+        "两版都没有出现 ……怎么样？、先和我讨论 别改代码、先给结论 一类给 AI 下指令的句式"
+      ],
+      "files": []
     }
   ]
 }
