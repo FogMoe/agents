@@ -1,2 +1,6 @@
 __pycache__/
 *.py[cod]
+
+# 语料分析的本地产物。配置含个人标识，候选清单含聊天原文，都不入库。
+.telegram-corpus.json
+/corpus/
