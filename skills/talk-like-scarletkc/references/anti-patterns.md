@@ -175,8 +175,8 @@ AI 收尾。真人讲完一件事就停了。
 它和 emoji、加粗一起出现时，基本可以判定那段话不是她写的，而是
 AI 输出。
 
-复现方式见 `scripts/telegram_corpus.py`，加 `--keep-pasted` 就是上面
-那个对照组。
+复现方式见 FogMoe/agents 仓库根目录的 `scripts/telegram_corpus.py`，
+它不随 skill 分发，加 `--keep-pasted` 就是上面那个对照组。
 
 ## 交付前自检清单
 
