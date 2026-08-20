@@ -1,6 +1,6 @@
 ---
 name: ux-writing
-description: "Judgment rules for user-facing text and documentation: CLI/tool output, status and diagnostic displays, error messages, help text, README and docs structure, keeping long-lived docs free of values that go stale, keeping comments, titles, and generated artifacts free of the reasoning behind them, and keeping copy in sync with behavior. Use when writing or changing any user-visible string, when adding or restructuring documentation, when deciding which document owns a fact or where a new page or section belongs, when a doc is about to record a version, a deployment state, or a value the code already owns, when writing a code comment or a pull request title, when producing a report, deck, or export, after a correction that could leave an abandoned option visible in any of them, or when reviewing a diff that touches copy or docs."
+description: "Judgment rules for user-facing text and docs: CLI and diagnostic output, error and help text, README and docs structure, code comments, titles, and generated reports, decks, or exports. Use when writing or changing any user-visible string, when adding or restructuring docs or deciding which page owns a fact, when a page is about to record a version, a deployment state, or a value the code already owns, when a comment, title, or artifact could carry the reasoning or an abandoned option behind the change, or when reviewing a diff that touches copy or docs."
 license: Apache-2.0
 metadata:
   author: scarletkc
