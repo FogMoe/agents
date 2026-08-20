@@ -50,10 +50,12 @@ quietly keeping it.
 ## Claims stay traceable
 
 Take substance from what actually shipped: the changelog, the commit range,
-the release notes. Every concrete claim should trace to one of those, and
-specifics beat adjectives at the same length. A number, a mechanism, or a
+the release notes. Every concrete claim traces to one of those, and an
+adjective that carries a claim owes what "adjectives need evidence" in
+`ux-writing` asks of it. What outbound adds is the exchange rate: specifics
+beat adjectives at the same length, because a number, a mechanism, or a
 before-and-after carries conviction that "greatly improved" cannot, and it
-also survives a reader who checks.
+survives a reader who checks.
 
 Never invent a metric, a benchmark, a user count, a review quote, or a
 comparison against a named competitor. When the honest version is thin, that
