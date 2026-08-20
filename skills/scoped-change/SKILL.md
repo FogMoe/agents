@@ -16,6 +16,13 @@ and they fail differently: unrequested edits surface in review or in
 production, missing edits surface as the user finding them. Locate the
 boundary first, then be exhaustive inside it and inert outside it.
 
+When the boundary is corrected mid-task, the result reads as though the
+corrected scope were the only one there had ever been. A title, comment, or
+rationale that keeps the dropped option alive re-imports the overshoot the
+correction just removed, and the reader pays for it twice; what belongs in a
+deliverable is
+[`ux-writing`](https://github.com/FogMoe/agents/blob/main/skills/ux-writing/SKILL.md).
+
 ## Outside the boundary
 
 - **Edit only the surfaces the request names.** A request that names one

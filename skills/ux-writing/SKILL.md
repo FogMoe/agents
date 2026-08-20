@@ -1,11 +1,11 @@
 ---
 name: ux-writing
-description: "Judgment rules for user-facing text and documentation: CLI/tool output, status and diagnostic displays, error messages, help text, README and docs structure, keeping long-lived docs free of values that go stale, and keeping copy in sync with behavior. Use when writing or changing any user-visible string, when adding or restructuring documentation, when deciding which document owns a fact or where a new page or section belongs, when a doc is about to record a version, a deployment state, or a value the code already owns, or when reviewing a diff that touches copy or docs."
+description: "Judgment rules for user-facing text and docs: CLI and diagnostic output, error and help text, README and docs structure, code comments, titles, and generated reports, decks, or exports. Use when writing or changing any user-visible string, when adding or restructuring docs or deciding which page owns a fact, when a page is about to record a version, a deployment state, or a value the code already owns, when a comment, title, or artifact could carry the reasoning or an abandoned option behind the change, when a behavior change needs its copy sites swept, or when reviewing a diff that touches copy or docs."
 license: Apache-2.0
 metadata:
   author: scarletkc
   fogmoe-source: https://github.com/FogMoe/agents
-  fogmoe-summary: "Review user-facing copy and documentation for clarity, consistency, and facts that do not go stale."
+  fogmoe-summary: "Review user-facing copy and documentation for clarity, consistency, facts that do not go stale, and no leftover intermediate state."
 ---
 
 # UX Writing & Docs
@@ -73,6 +73,16 @@ exception purely to suppress a traceback, keep the message intact.
   after shipping, so the rules lived half there and half in the architecture
   doc; folding the stable rules into the contract and leaving the sequence in
   git history left one page to trust.*
+- **Rationale is a genre of its own.** A how-to answers what to run, a
+  reference answers what exists, and why-it-was-built-this-way belongs to a
+  design record, an ADR, or the pull request that decided it. Answering the
+  design question inside a usage page pushes the steps the reader came for
+  below the fold, and the argument is also the part that rots first: the
+  implementation moves on and only the guide still defends the old choice.
+  An explanation produced because someone asked once belongs in that
+  answer, not in a permanent page. *Counter-example: a setup guide spent
+  its second paragraph on why this queue was chosen over two others; the
+  queue was replaced a release later and the paragraph outlived it.*
 - **One canonical home per fact.** Details that change together (field
   lists, precedence chains, supported values) live in exactly one document;
   every other mention links to it. Legitimate copies: artifacts distributed
@@ -167,6 +177,49 @@ applied to prose.
   "current environment" table listing service versions was updated by hand
   after every deploy, until the deploy where it wasn't, and nothing in CI
   could notice.*
+
+## The final state, not the path to it
+
+A deliverable is read by someone who was not in the room while it was made.
+Anything that only holds against the conversation behind it — an option
+that was considered and dropped, a scope that was corrected, an instruction
+the requester gave ten minutes ago — reads as noise at best, and at worst
+as a claim about the product. Session context expires faster than the
+artifact carrying it, so this is "facts that go stale" applied to the
+conversation rather than to time. The test for any line: does it hold for a
+reader who has never seen that conversation? "Without the bulk-download
+panel" does not, because nobody expected one. "Not `json.dumps` here, the
+payload has to keep key order for the signature check" does.
+
+- **State what the code does, not what it nearly did.** Titles, summaries,
+  and comments describe the shipped behavior; intermediate attempts,
+  abandoned options, and negative scope belong to the discussion that
+  produced them, which git history and the review thread already keep.
+  *Counter-example: a requested cut left the pull request titled "Add
+  export button (without the bulk-download panel)", so every reader had to
+  understand a panel that never existed before reading the one that did.*
+- **A comment carries the non-obvious reason only.** What earns the lines
+  is a constraint the next reader cannot recover from the code: an ordering
+  requirement, an upstream bug, a platform quirk. A "why not X" line
+  qualifies when X is what that reader would reach for anyway, not when X
+  is merely what this conversation happened to try and discard. Restating
+  what the code plainly says, or defending it against an alternative nobody
+  would propose, spends attention now and becomes a lie when the code
+  around it moves. *Counter-example: a helper kept eight lines on why it
+  held no cache, written the moment a reviewer asked for the cache to go;
+  two rewrites later the paragraph was the only trace of either.*
+- **A deliverable does not narrate its own production.** Generated reports,
+  decks, exports, and screens are product content: they carry findings,
+  values, and instructions, never the implementation notes, method
+  rationale, or next steps of whoever produced them. "This page
+  demonstrates", "we could also", and "implemented as" are the producer's
+  voice leaking into the product, and the exceptions are narrow — copy that
+  genuinely is help text or an empty state, and documents explicitly asked
+  to record their own methodology. Reasoning has its own homes: the reply
+  to the requester, the commit message, the pull request body, a planning
+  file. *Counter-example: a generated status deck opened on a slide titled
+  "Approach and next steps for this report", ahead of the numbers it had
+  been asked for.*
 
 ## Sync sweep for behavior changes
 
