@@ -73,6 +73,16 @@ exception purely to suppress a traceback, keep the message intact.
   after shipping, so the rules lived half there and half in the architecture
   doc; folding the stable rules into the contract and leaving the sequence in
   git history left one page to trust.*
+- **Rationale is a genre of its own.** A how-to answers what to run, a
+  reference answers what exists, and why-it-was-built-this-way belongs to a
+  design record, an ADR, or the pull request that decided it. Answering the
+  design question inside a usage page pushes the steps the reader came for
+  below the fold, and the argument is also the part that rots first: the
+  implementation moves on and only the guide still defends the old choice.
+  An explanation produced because someone asked once belongs in that
+  answer, not in a permanent page. *Counter-example: a setup guide spent
+  its second paragraph on why this queue was chosen over two others; the
+  queue was replaced a release later and the paragraph outlived it.*
 - **One canonical home per fact.** Details that change together (field
   lists, precedence chains, supported values) live in exactly one document;
   every other mention links to it. Legitimate copies: artifacts distributed
