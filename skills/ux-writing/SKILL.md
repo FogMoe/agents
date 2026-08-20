@@ -208,6 +208,19 @@ payload has to keep key order for the signature check" does.
   around it moves. *Counter-example: a helper kept eight lines on why it
   held no cache, written the moment a reviewer asked for the cache to go;
   two rewrites later the paragraph was the only trace of either.*
+- **Evidence serves the reader's decision, not the author's doubt.** A
+  claim the reader has to act on — this one is faster, this default is
+  safe, use this over that — owes its basis, and "adjectives need evidence"
+  above says where the basis comes from. A statement of what the code does
+  owes nothing, because nobody is being asked to believe anything: a cited
+  standard, a benchmark number, or an appeal to consensus attached to it is
+  answering a challenge that was never made. The test is whether removing
+  the line changes what the reader can decide. Cited figures also age
+  faster than the sentence carrying them, and nobody comes back to
+  re-measure. *Counter-example: a config page defended its default with
+  "benchmarks show a 40% improvement", measured two majors earlier against
+  a code path that no longer existed; support was still quoting the
+  number.*
 - **A deliverable does not narrate its own production.** Generated reports,
   decks, exports, and screens are product content: they carry findings,
   values, and instructions, never the implementation notes, method
