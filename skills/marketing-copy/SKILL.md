@@ -16,8 +16,10 @@ permanent: a post can be deleted, a screenshot of it cannot. Both facts push
 the same way, toward concrete claims a reader can check.
 
 This covers copy aimed outward. Product-internal strings and documentation
-follow [`ux-writing`](../ux-writing/SKILL.md); matching the author's personal
-voice is [`talk-like-scarletkc`](../talk-like-scarletkc/SKILL.md).
+follow
+[`ux-writing`](https://github.com/FogMoe/agents/blob/main/skills/ux-writing/SKILL.md);
+matching the author's personal voice is
+[`talk-like-scarletkc`](https://github.com/FogMoe/agents/blob/main/skills/talk-like-scarletkc/SKILL.md).
 
 ## Disclosure comes first
 

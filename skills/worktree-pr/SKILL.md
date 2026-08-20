@@ -15,8 +15,8 @@ runs, and the untouched copy remains available as a baseline to compare
 against. Both are worth real setup cost, and neither applies to every change.
 
 This covers the isolation mechanics. How large the change itself should be is
-[`scoped-change`](../scoped-change/SKILL.md), and it applies inside a
-worktree exactly as it does anywhere else.
+[`scoped-change`](https://github.com/FogMoe/agents/blob/main/skills/scoped-change/SKILL.md),
+and it applies inside a worktree exactly as it does anywhere else.
 
 ## Deciding
 
