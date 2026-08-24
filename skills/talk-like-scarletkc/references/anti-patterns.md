@@ -201,7 +201,7 @@ AI 收尾。真人讲完一件事就停了。
 中文引号 0.1%。两份语料来源不同，年份跨度不同，结论一致，所以这几条
 按硬规则执行。
 
-复现方式见 FogMoe/agents 仓库根目录的 `scripts/telegram_corpus.py`，
+复现方式见 scarletkc/agents 仓库根目录的 `scripts/telegram_corpus.py`，
 它不随 skill 分发，加 `--keep-pasted` 就是上面那个对照组。私聊语料的
 统计脚本在作者的私有 persona 仓库里，语料本身不公开。
 

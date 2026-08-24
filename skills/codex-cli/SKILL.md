@@ -4,8 +4,8 @@ description: "When handing work to the Codex CLI earns its cost, and how to size
 license: Apache-2.0
 metadata:
   author: scarletkc
-  fogmoe-source: https://github.com/FogMoe/agents
-  fogmoe-summary: "Reach for the Codex CLI when a task is hard enough to earn it: second-model review, bounded hand-offs, sandbox permissions, and a model and effort matched to the difficulty."
+  source: https://github.com/scarletkc/agents
+  summary: "Reach for the Codex CLI when a task is hard enough to earn it: second-model review, bounded hand-offs, sandbox permissions, and a model and effort matched to the difficulty."
 ---
 
 # Codex CLI
@@ -54,7 +54,7 @@ yourself and checking it with the project's own tests remains the normal path.
   acceptance check in a paragraph. That paragraph is also the honest test of
   whether *you* understand the change — if you cannot write it, delegating it
   just moves the confusion downstream. What "bounded" means is
-  [`scoped-change`](https://github.com/FogMoe/agents/blob/main/skills/scoped-change/SKILL.md),
+  [`scoped-change`](https://github.com/scarletkc/agents/blob/main/skills/scoped-change/SKILL.md),
   and it binds Codex exactly as it binds you: pass the boundary along in the
   prompt, because Codex cannot infer where the user drew it.
 - **When the work is long, mechanical, and verifiable.** Wide renames,
@@ -74,7 +74,7 @@ yourself and checking it with the project's own tests remains the normal path.
 - **Judgment about words.** User-facing copy, documentation, naming, and
   release notes need the taste and the context of the session that has been
   talking to the user, and they survive delegation badly. See
-  [`ux-writing`](https://github.com/FogMoe/agents/blob/main/skills/ux-writing/SKILL.md).
+  [`ux-writing`](https://github.com/scarletkc/agents/blob/main/skills/ux-writing/SKILL.md).
 - **Anything you cannot check afterwards.** Delegating work you have no way
   to verify converts an unknown into a confident-sounding report, which is
   worse than the unknown. Establish the check first.

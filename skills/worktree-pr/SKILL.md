@@ -4,8 +4,8 @@ description: "Decide whether a task deserves its own git worktree and, if chosen
 license: Apache-2.0
 metadata:
   author: scarletkc
-  fogmoe-source: https://github.com/FogMoe/agents
-  fogmoe-summary: "Optionally run a task in its own worktree: branch from the integration branch, compare against the baseline, and prepare it for a PR."
+  source: https://github.com/scarletkc/agents
+  summary: "Optionally run a task in its own worktree: branch from the integration branch, compare against the baseline, and prepare it for a PR."
 ---
 
 # Worktree & PR
@@ -15,7 +15,7 @@ runs, and the untouched copy remains available as a baseline to compare
 against. Both are worth real setup cost, and neither applies to every change.
 
 This covers the isolation mechanics. How large the change itself should be is
-[`scoped-change`](https://github.com/FogMoe/agents/blob/main/skills/scoped-change/SKILL.md),
+[`scoped-change`](https://github.com/scarletkc/agents/blob/main/skills/scoped-change/SKILL.md),
 and it applies inside a worktree exactly as it does anywhere else.
 
 ## Deciding

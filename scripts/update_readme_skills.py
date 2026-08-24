@@ -14,9 +14,9 @@ from pathlib import Path
 
 START_MARKER = "<!-- skills:start -->"
 END_MARKER = "<!-- skills:end -->"
-SUMMARY_KEY = "fogmoe-summary"
+SUMMARY_KEY = "summary"
 REQUIRED_METADATA_VALUES = {
-    "fogmoe-source": "https://github.com/FogMoe/agents",
+    "source": "https://github.com/scarletkc/agents",
 }
 
 

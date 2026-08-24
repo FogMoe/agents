@@ -23,15 +23,15 @@ def write_skill(
     summary: str | None,
     *,
     author: str | None = "scarletkc",
-    source: str | None = "https://github.com/FogMoe/agents",
+    source: str | None = "https://github.com/scarletkc/agents",
 ) -> None:
     metadata_lines = ["metadata:"]
     if author is not None:
         metadata_lines.append(f"  author: {author}")
     if source is not None:
-        metadata_lines.append(f"  fogmoe-source: {source}")
+        metadata_lines.append(f"  source: {source}")
     if summary is not None:
-        metadata_lines.append(f'  fogmoe-summary: "{summary}"')
+        metadata_lines.append(f'  summary: "{summary}"')
     metadata = "\n".join(metadata_lines)
     path = root / "skills" / name / "SKILL.md"
     path.parent.mkdir(parents=True)
@@ -82,13 +82,13 @@ class UpdateReadmeSkillsTests(unittest.TestCase):
     def test_rejects_skill_without_summary(self) -> None:
         write_skill(self.root, "alpha", None)
 
-        with self.assertRaisesRegex(CatalogError, "missing metadata.fogmoe-summary"):
+        with self.assertRaisesRegex(CatalogError, "missing metadata.summary"):
             update_readme(self.root, check=False)
 
     def test_rejects_skill_without_canonical_source(self) -> None:
         write_skill(self.root, "alpha", "First skill.", source=None)
 
-        with self.assertRaisesRegex(CatalogError, "missing metadata.fogmoe-source"):
+        with self.assertRaisesRegex(CatalogError, "missing metadata.source"):
             update_readme(self.root, check=False)
 
     def test_rejects_skill_without_author(self) -> None:
