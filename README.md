@@ -9,6 +9,8 @@ and anything else that reads `AGENTS.md` or the
 - [`AGENTS.md`](AGENTS.md): project-agnostic base guidelines. Copy it into a
   repository and prepend the project-specific sections (structure, commands,
   domain notes).
+- [`user/AGENTS.md`](user/AGENTS.md): user-level collaboration preferences,
+  kept separate from the project-level guidelines.
 - [`skills/`](skills/): cross-agent skills; each skill is a directory
   containing a `SKILL.md` plus optional resources.
 
