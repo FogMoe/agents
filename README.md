@@ -34,7 +34,7 @@ for the complete activation description and instructions.
 
 Send this prompt to your coding agent:
 
-> Install skills from https://github.com/FogMoe/agents. Show me the available
+> Install skills from https://github.com/scarletkc/agents. Show me the available
 > skills and let me choose which ones to install.
 
 You can also use either CLI directly. Both installers let you choose individual
@@ -46,13 +46,13 @@ when needed.
 Browse the repository and install a skill for the current user:
 
 ```sh
-gh skill install FogMoe/agents --agent codex --scope user
+gh skill install scarletkc/agents --agent codex --scope user
 ```
 
 For a non-interactive installation, provide the skill name:
 
 ```sh
-gh skill install FogMoe/agents <skill> --agent codex --scope user
+gh skill install scarletkc/agents <skill> --agent codex --scope user
 ```
 
 Update installed skills with `gh skill update --all`.
@@ -62,13 +62,13 @@ Update installed skills with `gh skill update --all`.
 Browse the repository and choose skills and agents interactively:
 
 ```sh
-npx skills add FogMoe/agents -g
+npx skills add scarletkc/agents -g
 ```
 
 For a non-interactive installation, provide the skill and agent:
 
 ```sh
-npx skills add FogMoe/agents --skill <skill> --agent codex -g -y
+npx skills add scarletkc/agents --skill <skill> --agent codex -g -y
 ```
 
 Update global skills with `npx skills update -g -y`.
@@ -76,7 +76,7 @@ Update global skills with `npx skills update -g -y`.
 ## Feedback and contributions
 
 Report problems or suggest improvements through
-[GitHub Issues](https://github.com/FogMoe/agents/issues). Pull requests are
+[GitHub Issues](https://github.com/scarletkc/agents/issues). Pull requests are
 welcome.
 
 ## License

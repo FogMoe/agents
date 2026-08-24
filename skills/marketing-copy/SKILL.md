@@ -4,8 +4,8 @@ description: "Write outbound promotional copy for a product or project: launch a
 license: Apache-2.0
 metadata:
   author: scarletkc
-  fogmoe-source: https://github.com/FogMoe/agents
-  fogmoe-summary: "Write outbound promo copy that stays truthful, discloses only what may be public, and earns attention without hype."
+  source: https://github.com/scarletkc/agents
+  summary: "Write outbound promo copy that stays truthful, discloses only what may be public, and earns attention without hype."
 ---
 
 # Marketing Copy
@@ -17,9 +17,9 @@ the same way, toward concrete claims a reader can check.
 
 This covers copy aimed outward. Product-internal strings and documentation
 follow
-[`ux-writing`](https://github.com/FogMoe/agents/blob/main/skills/ux-writing/SKILL.md);
+[`ux-writing`](https://github.com/scarletkc/agents/blob/main/skills/ux-writing/SKILL.md);
 matching the author's personal voice is
-[`talk-like-scarletkc`](https://github.com/FogMoe/agents/blob/main/skills/talk-like-scarletkc/SKILL.md).
+[`talk-like-scarletkc`](https://github.com/scarletkc/agents/blob/main/skills/talk-like-scarletkc/SKILL.md).
 
 ## Disclosure comes first
 

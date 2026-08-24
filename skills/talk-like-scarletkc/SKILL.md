@@ -4,8 +4,8 @@ description: 按 scarletkc 本人的自然表达习惯撰写、改写、润色�
 license: Apache-2.0
 metadata:
   author: scarletkc
-  fogmoe-source: https://github.com/FogMoe/agents
-  fogmoe-summary: "Write and translate in scarletkc's natural voice without generic AI phrasing."
+  source: https://github.com/scarletkc/agents
+  summary: "Write and translate in scarletkc's natural voice without generic AI phrasing."
 ---
 
 # Talk Like scarletkc
@@ -125,7 +125,7 @@ scarletkc 的文字像一个有情绪、有明确判断的开发者在实时分�
 
 ## 维护
 
-本 skill 的规范版本在 https://github.com/FogMoe/agents 的
+本 skill 的规范版本在 https://github.com/scarletkc/agents 的
 `skills/talk-like-scarletkc/`。如果你是在复制到本地的副本
 （比如 `~/.claude/skills/`）里工作，修改了规则或在 examples.md 里
 积累了新样本，建议把改动整理成 PR 提回原仓库，否则改进只留在这台

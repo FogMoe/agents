@@ -4,8 +4,8 @@ description: "Judgment rules for locating the correct boundary of a requested ch
 license: Apache-2.0
 metadata:
   author: scarletkc
-  fogmoe-source: https://github.com/FogMoe/agents
-  fogmoe-summary: "Hold a change to the size the request defines: no unrequested surfaces, no speculative layers, no half-applied edits."
+  source: https://github.com/scarletkc/agents
+  summary: "Hold a change to the size the request defines: no unrequested surfaces, no speculative layers, no half-applied edits."
 ---
 
 # Scoped Change
@@ -21,7 +21,7 @@ corrected scope were the only one there had ever been. A title, comment, or
 rationale that keeps the dropped option alive re-imports the overshoot the
 correction just removed, and the reader pays for it twice; what belongs in a
 deliverable is
-[`ux-writing`](https://github.com/FogMoe/agents/blob/main/skills/ux-writing/SKILL.md).
+[`ux-writing`](https://github.com/scarletkc/agents/blob/main/skills/ux-writing/SKILL.md).
 
 ## Outside the boundary
 

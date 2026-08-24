@@ -4,8 +4,8 @@ description: "Judgment rules for user-facing text and docs: CLI and diagnostic o
 license: Apache-2.0
 metadata:
   author: scarletkc
-  fogmoe-source: https://github.com/FogMoe/agents
-  fogmoe-summary: "Review user-facing copy and documentation for clarity, consistency, facts that do not go stale, and no leftover intermediate state."
+  source: https://github.com/scarletkc/agents
+  summary: "Review user-facing copy and documentation for clarity, consistency, facts that do not go stale, and no leftover intermediate state."
 ---
 
 # UX Writing & Docs
