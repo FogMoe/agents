@@ -4,6 +4,10 @@ Shared standards and skills for AI coding agents: Claude Code, Codex CLI,
 and anything else that reads `AGENTS.md` or the
 [SKILL.md](https://agentskills.io) format.
 
+## Featured in
+
+- [Awesome Agent Skills](https://github.com/VoltAgent/awesome-agent-skills/blob/main/README.md#development-and-testing)
+
 ## Contents
 
 - [`AGENTS.md`](AGENTS.md): project-agnostic base guidelines. Copy it into a
