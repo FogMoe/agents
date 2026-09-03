@@ -77,6 +77,18 @@ npx skills add scarletkc/agents --skill <skill> --agent codex -g -y
 
 Update global skills with `npx skills update -g -y`.
 
+## Package a skill
+
+Create a ZIP for a web app that accepts skill uploads:
+
+```sh
+python scripts/package_skill.py <skill>
+```
+
+The archive is written to `dist/<skill>.zip`. Its root contains `SKILL.md`
+and the skill's supporting files, ready to upload as one file. Root-level
+`evals/` and local build artifacts are excluded.
+
 ## Feedback and contributions
 
 Report problems or suggest improvements through
