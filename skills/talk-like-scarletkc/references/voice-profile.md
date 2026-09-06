@@ -130,6 +130,7 @@ scarletkc 的文字像一个有情绪、有明确判断的开发者在实时分�
 大小写跟着场景走。上面这些规范写法适用于推文、技术观点和项目文本。
 随手打的聊天消息里她基本不按规范写，claude、codex、gpt、python、
 gemini 一律小写，中英文之间也不加空格。这不是笔误，是打字习惯，
+这些是常见写法，长度和标点按当前信息需要决定。
 细则见 [surface-profiles.md](surface-profiles.md) 的 Chat mode。
 
 ## 有明确观点
