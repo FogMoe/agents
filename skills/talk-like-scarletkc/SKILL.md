@@ -1,6 +1,6 @@
 ---
 name: talk-like-scarletkc
-description: 按 scarletkc 本人的自然表达习惯撰写、改写、润色和翻译文本，覆盖推文、微博、评论、聊天消息、技术观点、项目介绍、GitHub 文本（README、issue、PR、发布说明）和正式通信。当用户要求用自己的口吻写东西、把 AI 腔文字改自然、发推、回评论、点评模型或开发工具、写项目公告、写礼貌但直接的客服或正式邮件，或要求翻译时保留语气和立场，都使用本 skill，即使用户没有点名 scarletkc 或提出风格要求。
+description: 按 scarletkc 本人的自然表达习惯代写、改写、润色和翻译文本，适用于推文、评论、聊天消息、模型或工具体验文、项目介绍、GitHub 文本和正式通信。用户要求撰写可直接使用的成稿、去除 AI 腔，或在翻译中保留本人语气和立场时使用，无需明确点名本 skill。单纯的事实问答、技术分析、代码审查和任务讨论不触发。
 license: Apache-2.0
 metadata:
   author: scarletkc
@@ -26,7 +26,7 @@ scarletkc 的文字像一个有情绪、有明确判断的开发者在实时分�
 
 ## 核心声音（速览）
 
-需要校准声音时读 `references/voice-profile.md`；已有上下文足够时可直接写作。
+完整说明见 `references/voice-profile.md`，读取时机见工作流程。
 
 1. 直接进入内容。第一句话承载真正想说的东西：判断、发现、情绪、具体
    问题或有意思的反差。不写"当然可以""这是一个很有意思的问题"一类开场。
@@ -81,7 +81,8 @@ scarletkc 的文字像一个有情绪、有明确判断的开发者在实时分�
 
 ## 工作流程
 
-1. 判断场景，必要时读 `references/surface-profiles.md` 中对应的模式：
+1. 首次使用先读 `references/voice-profile.md`。判断场景，首次写该场景或
+   当前上下文已缺少其规则时，读 `references/surface-profiles.md` 中对应的模式：
    Chat、Social、Technical opinion、Project writing、Formal、Translation。
    落在 Chat 的话再判断是跟人聊天还是给 AI 下指令，这两个子场景的
    长度、标点和英文大小写差别很大。落在 Project writing 的话，再判断
@@ -94,16 +95,18 @@ scarletkc 的文字像一个有情绪、有明确判断的开发者在实时分�
    问题。不要凭空替用户作判断，也不要把提供的参考信息自动当作用户的
    观点。措辞、结构和一般编辑取舍可以自主处理，用户已经明确表达的立场
    无需反复确认。
-3. 先完成一版自然表达，不要逐条机械套规则。需要找节奏感时看
-   `references/examples.md` 的样本。代写聊天消息且需要校准接话方式时，
-   选读 `references/dialogue-samples.md` 中相关的对话。小修改可沿用当前
-   上下文，参考文件按缺少的信息选读。
+3. 写作前用相关样本校准节奏。当前上下文没有该场景的样本时，读
+   `references/examples.md` 中对应的部分；代写跟人聊天的消息时，改读
+   `references/dialogue-samples.md` 中相关的对话，留意接话与气泡拆分。
+   已有相关样本的后续写作或小修改可直接沿用。再完成一版自然表达，
+   不要逐条机械套规则，也不要把样本观点当作用户当前的立场。
 4. 按需要参考 `references/anti-patterns.md` 检查 AI 写作特征和标点。
    `scripts/lint_style.py` 仅提供候选提示，结合语义判断是否修改；
    零提示不作为成稿合格的条件。
 5. 朗读文字，确认它像一个具体的人在说话，而且没有编造 scarletkc 的
    经历或观点。
-6. 成稿应可直接使用，写作过程说明放在正文之外。
+6. 默认只输出可直接使用的成稿。用户要求解释时，把说明放在正文之外；
+   核心立场缺失时，先按第 2 步澄清。
 
 ## 交付前自检
 
@@ -124,11 +127,11 @@ scarletkc 的文字像一个有情绪、有明确判断的开发者在实时分�
 
 | 文件 | 内容 | 什么时候读 |
 |------|------|-----------|
-| `references/voice-profile.md` | 核心声音的完整说明和边界 | 需要校准声音时 |
-| `references/surface-profiles.md` | 六个场景模式的详细规则 | 对场景写法不确定时选读 |
+| `references/voice-profile.md` | 核心声音的完整说明和边界 | 首次使用，或需要重新校准声音时 |
+| `references/surface-profiles.md` | 六个场景模式的详细规则 | 首次写该场景，或上下文已缺少其规则时 |
 | `references/anti-patterns.md` | 句式偏好、AI 写作特征、自检清单 | 按需要检查 |
-| `references/examples.md` | 代表性风格样本、群聊和对 AI 指令两类真实记录、用户认可的修改版 | 需要校准节奏和气质时 |
-| `references/dialogue-samples.md` | 100 段真实一对一对话，保留连发拆分 | 代写聊天消息且需校准时选读；样本观点不代表用户当前立场 |
+| `references/examples.md` | 代表性风格样本、群聊和对 AI 指令两类真实记录、用户认可的修改版 | 上下文没有该场景的样本时读对应部分 |
+| `references/dialogue-samples.md` | 100 段真实一对一对话，保留连发拆分 | 代写跟人聊天的消息且上下文缺少相关样本时读对应对话 |
 | `references/persona.md` | 身份和长期背景，以及使用边界 | 仅在任务涉及署名、人称或身份背景时按需读取，普通改写任务不必加载 |
 | `scripts/lint_style.py` | 风格检查脚本，只提示不改写 | 交付前可选运行 |
 
