@@ -112,6 +112,97 @@
         "Provides usable copy without blocking on the unknown root cause"
       ],
       "files": []
+    },
+    {
+      "id": 10,
+      "name": "summary-versus-competing-contract",
+      "prompt": "Review two README proposals. The maintained configuration reference is generated from schema.py and contains seven fields with defaults. Proposal A adds a minimal working example and links to that reference. Proposal B manually copies the entire seven-field table, including defaults, and appends the same link. No process keeps the manual table synchronized. Which parts should we keep or change?",
+      "expected_output": "Keep the useful example and link; identify the full manual table as a competing contract and suggest linking to or generating it from the maintained source.",
+      "assertions": [
+        "Does not remove the minimal example just because a detailed reference exists",
+        "Explains why appending a link does not keep the duplicated table synchronized",
+        "Offers a maintained-source solution rather than merely checking today's values",
+        "Does not propose restructuring schema.py or unrelated documentation"
+      ],
+      "files": []
+    },
+    {
+      "id": 11,
+      "name": "maintainable-facts-and-dated-observations",
+      "prompt": "Review a standing operations guide that manually repeats the deployed build ID and migration count. The dashboard provides current deployment state and the migrations directory is authoritative for migrations; neither updates the guide. The same guide requires Python 3.12 or later, a verified compatibility constraint maintained by the existing release checklist. A separate dated incident report records the build observed during that incident. Explain what to preserve or change.",
+      "expected_output": "Replace or generate the unmaintained current-state copies, retain the supported Python requirement and its maintenance path, and preserve the incident report's dated observation.",
+      "assertions": [
+        "Addresses how the build ID and migration count will stay correct after future changes",
+        "Points current-state readers to the authoritative source or suggests generation from it",
+        "Does not delete the necessary Python version constraint",
+        "Distinguishes the historical incident observation from a claim about current deployment"
+      ],
+      "files": []
+    },
+    {
+      "id": 12,
+      "name": "standalone-copy-and-relevant-history",
+      "prompt": "Review these additions: a user-facing heading 'Export CSV without the bulk-download panel', where the panel was only an abandoned internal idea; a note that CSV export omits attachments, which is an actual limitation users need to know; and a paragraph explaining the rejected panel in an ADR explicitly intended to record that decision. Give a correction for the heading and assess the other two items.",
+      "expected_output": "Remove the abandoned panel from the heading while preserving the real attachment limitation and the ADR's relevant history.",
+      "assertions": [
+        "Provides a heading that makes sense without the internal conversation",
+        "Keeps the attachment exclusion because it describes the actual export contract",
+        "Keeps the requested decision history in the ADR",
+        "Does not apply a blanket prohibition on negative statements or rejected alternatives"
+      ],
+      "files": []
+    },
+    {
+      "id": 13,
+      "name": "comments-preserve-non-obvious-reasons",
+      "prompt": "Review a comment-only change before lock.release() and notify_listener(): the existing comment says 'Release before notifying: listeners can re-enter this object and acquire the same non-reentrant lock.' The replacement says 'Release the lock.' The re-entry behavior is verified. A separate public function docstring describes the accepted input and return value. Should either explanation be removed for brevity?",
+      "expected_output": "Preserve the ordering and deadlock rationale and retain the useful public API contract without changing executable code.",
+      "assertions": [
+        "Explains that the shorter comment loses the non-obvious reason for releasing the lock before notification",
+        "Preserves the listener re-entry and non-reentrant lock information",
+        "Does not remove public API documentation under a reasons-only rule",
+        "Does not redesign locking or callback behavior during the comment review"
+      ],
+      "files": []
+    },
+    {
+      "id": 14,
+      "name": "diagnostic-detail-depends-on-available-views",
+      "prompt": "Review the output structure for two tools. Tool A has a doctor summary with fifteen normal field-origin rows burying two problematic overrides; its existing inspect command shows every effective value and origin. Tool B has one diagnostic command, no other inspection view, and users need the displayed endpoint and timeout to investigate failures. Suggest output improvements using only these existing surfaces.",
+      "expected_output": "Focus Tool A's summary on problems and sources with a pointer to inspect; preserve Tool B's necessary diagnostic values because there is no separate view.",
+      "assertions": [
+        "Suggests surfacing the two problematic overrides and their origins in Tool A",
+        "Uses Tool A's existing inspect command for complete detail",
+        "Preserves Tool B's endpoint and timeout information",
+        "Does not prescribe delta-only output universally or invent a new inspection command"
+      ],
+      "files": []
+    },
+    {
+      "id": 15,
+      "name": "field-level-origin-claims",
+      "prompt": "Correct this configuration display: 'Endpoint settings (from environment): URL=https://api.example.com; API key=configured'. The URL comes from the config file. Only the key comes from an environment variable. Keep both facts visible and do not expose the key itself.",
+      "expected_output": "Attribute the URL to the config file and the configured key to the environment, without labeling the entire endpoint as environment-provided.",
+      "assertions": [
+        "Keeps the complete example URL and identifies its config-file source",
+        "Attributes only the key to the environment",
+        "Reports key presence without revealing or inventing its value"
+      ],
+      "files": []
+    },
+    {
+      "id": 16,
+      "name": "page-responsibility-and-readme-sections",
+      "prompt": "Review this proposed README outline: an introduction naming the product and audience; a Why Use It section containing the full configuration field catalog; a Quick Start that opens with four paragraphs about rejected storage designs, then gives the install and first-run commands; and a required database migration warning next to the first-run command. Existing Configuration Reference and Architecture Decision pages own the catalog and storage history. Recommend a concrete organization.",
+      "expected_output": "Keep the introduction and essential first-run path in the README, place detailed contracts and decision history on their owning pages, and retain the migration warning next to the affected command.",
+      "assertions": [
+        "Applies a concrete responsibility to positioning, quick start, reference, and design history rather than merely saying organization depends on preference",
+        "Moves or links the full field catalog to Configuration Reference and the storage history to the Architecture Decision page",
+        "Keeps prerequisites and commands needed to reach the first useful result in Quick Start",
+        "Preserves the migration warning at the point where the reader needs it",
+        "Does not propose a second competing reference or an unnecessary new documentation hierarchy"
+      ],
+      "files": []
     }
   ]
 }
