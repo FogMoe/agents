@@ -26,6 +26,7 @@ for the complete activation description and instructions.
 <!-- skills:start -->
 | Skill | Summary |
 |-------|---------|
+| [antigravity-cli](skills/antigravity-cli/SKILL.md) | Delegate work to Antigravity CLI, inspect progress and tool failures, and continue the same conversation across follow-up tasks. |
 | [codex-cli](skills/codex-cli/SKILL.md) | Reach for the Codex CLI when a task is hard enough to earn it: second-model review, bounded hand-offs, sandbox permissions, and a model and effort matched to the difficulty. |
 | [grok-cli](skills/grok-cli/SKILL.md) | Delegate work to Grok Build, keep its session for follow-ups, and inspect results while the supervising agent continues working. |
 | [marketing-copy](skills/marketing-copy/SKILL.md) | Write outbound promo copy that stays truthful, discloses only what may be public, and earns attention without hype. |
@@ -96,6 +97,11 @@ python scripts/package_skill.py <skill>
 The archive is written to `dist/<skill>.zip`. Its root contains `SKILL.md`
 and the skill's supporting files, ready to upload as one file. Root-level
 `evals/` and local build artifacts are excluded.
+
+The CLI skills bundle their shared task runtime so each skill can be installed
+independently. After editing `scripts/agent_task_runtime.py`, run
+`python scripts/sync_agent_runtime.py` to update the bundled copies. The test
+suite checks that those copies match the maintained source.
 
 ## Feedback and contributions
 
