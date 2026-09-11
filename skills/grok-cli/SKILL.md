@@ -106,8 +106,10 @@ task ID means the worker started, not that Grok authenticated or finished.
 `completed` means Grok ended its turn, not that its claims were verified.
 Inspect the actual diff or cited evidence and run the relevant checks.
 
-On a tool, authentication, or process failure, surface the failure and
-inspect any partial result before retrying. Do not silently perform the
-task yourself and present it as Grok's work. Report what Grok contributed
-and what the supervising agent verified. Committing, publishing, and other
-external actions keep the authorization boundaries of the original task.
+If Grok is unavailable or an installation, configuration, authentication,
+tool, or process failure blocks the task, explicitly tell the user what
+failed and which work remains incomplete. Inspect any partial result before
+retrying. Do not silently substitute your own work, another agent, or another
+provider for the requested Grok task. Report what Grok contributed and what
+the supervising agent verified. Committing, publishing, and other external
+actions keep the authorization boundaries of the original task.
