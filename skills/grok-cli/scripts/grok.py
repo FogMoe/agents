@@ -5,32 +5,25 @@ from __future__ import annotations
 
 import argparse
 import json
-import math
 import os
 import shutil
 import sqlite3
-import subprocess
-import sys
-import threading
 import time
 import traceback
-import uuid
 from pathlib import Path
 from typing import Any
 
 from acp_client import ACPClient, ACPError
+from agent_task_runtime import (
+    Store,
+    TaskError,
+    encode,
+    launch_worker,
+    read_prompt,
+    seconds,
+)
 
 FINISHED = {"completed", "cancelled", "failed", "timed_out"}
-HEARTBEAT_TIMEOUT = 15
-
-
-class TaskError(RuntimeError):
-    pass
-
-
-def encode(value: Any) -> str:
-    # ASCII escapes keep redirected JSON usable on non-UTF-8 Windows terminals.
-    return json.dumps(value, ensure_ascii=True, allow_nan=False)
 
 
 def default_state_dir() -> Path:
@@ -43,122 +36,6 @@ def default_state_dir() -> Path:
         Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state"))
         / "grok-acp"
     )
-
-
-class Store:
-    def __init__(self, root: Path):
-        self.root = root.expanduser().resolve()
-        self.root.mkdir(parents=True, exist_ok=True, mode=0o700)
-        self.db = sqlite3.connect(self.root / "tasks.sqlite3", timeout=10)
-        self.db.execute("PRAGMA journal_mode=WAL")
-        self.db.executescript("""
-            CREATE TABLE IF NOT EXISTS tasks (
-                id TEXT PRIMARY KEY, config TEXT NOT NULL, state TEXT NOT NULL
-            );
-            CREATE TABLE IF NOT EXISTS commands (
-                id INTEGER PRIMARY KEY AUTOINCREMENT, task_id TEXT NOT NULL,
-                payload TEXT NOT NULL, result TEXT
-            );
-        """)
-
-    def close(self) -> None:
-        self.db.close()
-
-    def create(self, config: dict[str, Any]) -> dict[str, Any]:
-        task_id = uuid.uuid4().hex
-        directory = self.root / task_id
-        directory.mkdir(mode=0o700)
-        state = {
-            "task_id": task_id,
-            "session_id": None,
-            "status": "starting",
-            "closed": False,
-            "turn": 0,
-            "text": "",
-            "pending_permissions": [],
-            "tools": [],
-            "cwd": config["cwd"],
-            "updated_at": time.time(),
-            "log_dir": str(directory),
-        }
-        with self.db:
-            self.db.execute(
-                "INSERT INTO tasks VALUES (?, ?, ?)",
-                (task_id, encode(config), encode(state)),
-            )
-        return state
-
-    def get(self, task_id: str) -> tuple[dict[str, Any], dict[str, Any]]:
-        if len(task_id) != 32 or any(c not in "0123456789abcdef" for c in task_id):
-            raise TaskError("Invalid task ID; use the task_id returned by start")
-        row = self.db.execute(
-            "SELECT config, state FROM tasks WHERE id=?", (task_id,)
-        ).fetchone()
-        if row is None:
-            raise TaskError("Unknown task ID; use the same --state-dir as start")
-        return json.loads(row[0]), json.loads(row[1])
-
-    def save(self, state: dict[str, Any]) -> None:
-        state["updated_at"] = time.time()
-        with self.db:
-            self.db.execute(
-                "UPDATE tasks SET state=? WHERE id=?", (encode(state), state["task_id"])
-            )
-
-    def status(self, task_id: str) -> dict[str, Any]:
-        _, state = self.get(task_id)
-        if (
-            not state["closed"]
-            and time.time() - state["updated_at"] > HEARTBEAT_TIMEOUT
-        ):
-            state = {
-                **state,
-                "status": "unresponsive",
-                "error": "Worker heartbeat expired; inspect worker.log before starting another task",
-            }
-        return state
-
-    def submit(self, task_id: str, payload: dict[str, Any]) -> dict[str, Any]:
-        state = self.status(task_id)
-        if state["closed"] or state["status"] == "unresponsive":
-            raise TaskError(
-                "Task is closed or unresponsive; its recorded result remains available via status"
-            )
-        with self.db:
-            cursor = self.db.execute(
-                "INSERT INTO commands(task_id,payload) VALUES (?,?)",
-                (task_id, encode(payload)),
-            )
-            command_id = cursor.lastrowid
-        deadline = time.monotonic() + 5
-        while time.monotonic() < deadline:
-            row = self.db.execute(
-                "SELECT result FROM commands WHERE id=?", (command_id,)
-            ).fetchone()
-            if row[0] is not None:
-                result = json.loads(row[0])
-                if "command_error" in result:
-                    raise TaskError(result["command_error"])
-                return {"command_id": command_id, **result}
-            time.sleep(0.05)
-        return {
-            "task_id": task_id,
-            "command_id": command_id,
-            "command_status": "queued",
-            "note": "Command not yet acknowledged; check status before retrying",
-        }
-
-    def commands(self, task_id: str) -> list[tuple[int, str]]:
-        return self.db.execute(
-            "SELECT id,payload FROM commands WHERE task_id=? AND result IS NULL ORDER BY id",
-            (task_id,),
-        ).fetchall()
-
-    def acknowledge(self, command_id: int, result: dict[str, Any]) -> None:
-        with self.db:
-            self.db.execute(
-                "UPDATE commands SET result=? WHERE id=?", (encode(result), command_id)
-            )
 
 
 class Worker:
@@ -506,63 +383,7 @@ class Worker:
 
 
 def launch(store: Store, config: dict[str, Any]) -> dict[str, Any]:
-    state = store.create(config)
-    command = [
-        sys.executable,
-        str(Path(__file__).resolve()),
-        "--state-dir",
-        str(store.root),
-        "--worker",
-        state["task_id"],
-    ]
-    options: dict[str, Any] = {}
-    if os.name == "nt":
-        options["creationflags"] = (
-            subprocess.CREATE_NO_WINDOW | subprocess.CREATE_NEW_PROCESS_GROUP
-        )
-    else:
-        options["start_new_session"] = True
-    try:
-        with (store.root / state["task_id"] / "worker.log").open("ab") as log:
-            process = subprocess.Popen(
-                command,
-                stdin=subprocess.DEVNULL,
-                stdout=log,
-                stderr=log,
-                cwd=store.root,
-                close_fds=True,
-                **options,
-            )
-        # Retain no inherited pipes: a caller can exit while the worker lives.
-        threading.Thread(target=process.wait, daemon=True).start()
-        return {**state, "worker_pid": process.pid}
-    except OSError as exc:
-        state.update(status="failed", closed=True, error=str(exc))
-        store.save(state)
-        raise
-
-
-def read_prompt(args: argparse.Namespace) -> str:
-    if args.prompt_file is not None:
-        text = args.prompt_file.read_text(encoding="utf-8-sig")
-    elif args.prompt is not None:
-        text = args.prompt
-    else:
-        text = sys.stdin.buffer.read().decode("utf-8-sig")
-    if not text.strip():
-        raise TaskError(
-            "Prompt is empty; provide --prompt, --prompt-file, or UTF-8 stdin"
-        )
-    return text
-
-
-def seconds(value: str) -> float:
-    number = float(value)
-    if not math.isfinite(number) or number <= 0:
-        raise argparse.ArgumentTypeError(
-            "timeout must be a finite number greater than zero"
-        )
-    return number
+    return launch_worker(store, config, Path(__file__))
 
 
 def parser() -> argparse.ArgumentParser:
